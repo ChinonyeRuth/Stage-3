@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
-// Import your image files
 import image1 from '../assets/image1.jpg'
 import image2 from '../assets/image2.jpg'
 import image3 from '../assets/image3.jpg'
@@ -26,8 +25,6 @@ const images = [
   { id: '9', url: image9, tags: 'Tag9' },
   { id: '10', url: image10, tags: 'Tag10' },
   { id: '11', url: image11, tags: 'Tag11' },
-
-  // Add more images as needed
 ]
 
 const ImageGallery = () => {
@@ -36,11 +33,10 @@ const ImageGallery = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Simulate loading images with a delay (you can replace this with actual data fetching)
     setTimeout(() => {
       setImageList(images)
-      setLoading(false) // Set loading to false when images are ready
-    }, 2000) // Simulate a 2-second delay
+      setLoading(false)
+    }, 2000)
   }, [])
 
   const handleSearch = (e) => {
@@ -62,11 +58,21 @@ const ImageGallery = () => {
   }
 
   return (
-    <div className="bg-gray-100 min-h-screen py-8">
+    <div className="bg-gray-100 min-h-screen">
+      {/* Header */}
+      <header className="bg-indigo-600 text-white py-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <h1 className="text-3xl font-semibold">CHIINONYE</h1>
+          <div className="flex items-center space-x-4">
+            <div className="rounded-full bg-white w-8 h-8 flex items-center justify-center">
+              <span className="text-indigo-600 font-bold">U</span>
+            </div>
+            <p className="font-semibold">User</p>
+          </div>
+        </div>
+      </header>
+
       <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-semibold text-gray-800 mb-4">
-          Beautiful Image Gallery
-        </h1>
         <input
           type="text"
           placeholder="Search images by tag..."
@@ -77,7 +83,6 @@ const ImageGallery = () => {
 
         {loading ? (
           <div className="flex justify-center items-center h-48">
-            {/* Replace with your preferred loading UI */}
             <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
           </div>
         ) : (
